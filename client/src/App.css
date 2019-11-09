@@ -42,5 +42,13 @@
   margin: 20px 1%;
   padding: 10px 1.5%;
   background-color: #E8E8E8;
+}
 
+.dark-mode {
+  background-color: #383838;
+  color: #fff;
+}
+
+.dark-mode .player-card {
+  background-color: black;
 }

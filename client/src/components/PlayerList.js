@@ -8,7 +8,7 @@ const PlayerList = props => {
   }
 
   return (
-    props.data.map((player, index) => {
+    props.data.slice(0, props.limit).map((player, index) => {
       return <PlayerCard data={player} key={index} />
     })
   )

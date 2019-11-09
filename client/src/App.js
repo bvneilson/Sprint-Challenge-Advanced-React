@@ -1,31 +1,29 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 import PlayerList from './components/PlayerList.js';
+import Navbar from './components/Navbar.js';
+const App = () => {
 
-class App extends Component {
-  state = {
-    playerData: ''
-  }
+  const [playerData, setPlayerData] = useState();
 
-  componentDidMount() {
+  useEffect(() => {
     axios.get('http://localhost:5000/api/players').then(res => {
       console.log(res);
-      this.setState({playerData: res.data})
+      setPlayerData(res.data)
     }).catch(err => {
       console.log(err);
     })
-  }
+  });
 
-  render() {
-    return (
-      <div className="App">
-        <div className="player-list">
-          <PlayerList data={this.state.playerData} />
-        </div>
+  return (
+    <div className="App">
+      <Navbar />
+      <div className="player-list">
+        <PlayerList data={playerData} />
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default App;
